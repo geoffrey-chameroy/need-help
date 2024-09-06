@@ -38,7 +38,7 @@ class JobService
         $page = max($page, 1);
 
         // todo: pagination
-        return $this->jobRepository->findAll();
+        return $this->jobRepository->findBy(['status' => Job::STATUS_PENDING]);
     }
 
     public function update(Job $job, JobInputDto $inputDto): Job
