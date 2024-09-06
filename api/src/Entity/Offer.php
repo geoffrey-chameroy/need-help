@@ -10,11 +10,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: OfferRepository::class)]
 class Offer
 {
+    use TimestampableEntity;
     public const STATUS_PENDING = 'status_pending';
     public const STATUS_ACCEPTED = 'status_accepted';
     public const STATUS_REJECTED = 'status_rejected';
-
-    use TimestampableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

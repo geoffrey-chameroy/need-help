@@ -13,12 +13,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 class Job
 {
+    use TimestampableEntity;
     public const STATUS_PENDING = 'status_pending';
     public const STATUS_IN_PROGRESS = 'status_in_progress';
     public const STATUS_DONE = 'status_done';
     public const STATUS_CANCELLED = 'status_cancelled';
-
-    use TimestampableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

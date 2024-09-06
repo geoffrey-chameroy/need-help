@@ -12,7 +12,7 @@ class JobFactory
         // default pending status
         $status = $status ?: Job::STATUS_PENDING;
 
-        return (new Job)
+        return (new Job())
             ->setCreatedBy($createdBy)
             ->setTitle($title)
             ->setDescription($description)

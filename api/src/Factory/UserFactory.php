@@ -8,9 +8,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserFactory
 {
     public function __construct(
-        private readonly UserPasswordHasherInterface $passwordHasher
-    )
-    {
+        private readonly UserPasswordHasherInterface $passwordHasher,
+    ) {
     }
 
     public function create(string $email, string $name, string $plainPassword, array $roles = []): User

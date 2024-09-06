@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Job;
 use App\Entity\User;
 use App\Factory\JobFactory;
 use App\Factory\OfferFactory;
@@ -17,8 +16,7 @@ class AppFixtures extends Fixture
         private readonly UserFactory $userFactory,
         private readonly JobFactory $jobFactory,
         private readonly OfferFactory $offerFactory,
-    )
-    {
+    ) {
     }
 
     public function load(ObjectManager $manager): void
@@ -30,7 +28,6 @@ class AppFixtures extends Fixture
             [User::ROLE_USER, User::ROLE_JOBBER],
         );
         $manager->persist($user);
-
 
         $faker = Factory::create();
         for ($i = 0; $i < 20; ++$i) {

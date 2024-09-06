@@ -14,13 +14,12 @@ class OfferService
     public function __construct(
         private readonly OfferFactory $offerFactory,
         private readonly EntityManagerInterface $entityManager,
-    )
-    {
+    ) {
     }
 
     public function create(Job $job, User $jobber, OfferInputDto $inputDto): Offer
     {
-        if ($job->getStatus() !== Job::STATUS_PENDING) {
+        if (Job::STATUS_PENDING !== $job->getStatus()) {
             throw new \Exception('This offer is not pending.');
         }
 
@@ -39,12 +38,12 @@ class OfferService
     public function accept(Offer $acceptedOffer): Offer
     {
         $job = $acceptedOffer->getJob();
-        if ($job->getStatus() !== Job::STATUS_PENDING) {
+        if (Job::STATUS_PENDING !== $job->getStatus()) {
             throw new \Exception('This offer is not pending.');
         }
 
         // offer already accepted
-        if ($acceptedOffer->getStatus() !== Offer::STATUS_ACCEPTED) {
+        if (Offer::STATUS_ACCEPTED !== $acceptedOffer->getStatus()) {
             return $acceptedOffer;
         }
 
@@ -74,12 +73,12 @@ class OfferService
     public function reject(Offer $rejectedOffer): Offer
     {
         $job = $rejectedOffer->getJob();
-        if ($job->getStatus() !== Job::STATUS_PENDING) {
+        if (Job::STATUS_PENDING !== $job->getStatus()) {
             throw new \Exception('This offer is not pending.');
         }
 
         // offer already rejected
-        if ($rejectedOffer->getStatus() !== Offer::STATUS_REJECTED) {
+        if (Offer::STATUS_REJECTED !== $rejectedOffer->getStatus()) {
             return $rejectedOffer;
         }
 

@@ -16,8 +16,7 @@ class JobService
         private readonly JobFactory $jobFactory,
         private readonly EntityManagerInterface $entityManager,
         private readonly JobRepository $jobRepository,
-    )
-    {
+    ) {
     }
 
     public function create(User $createdBy, JobInputDto $inputDto): Job
@@ -55,12 +54,12 @@ class JobService
 
     public function cancel(Job $job): Job
     {
-        if ($job->getStatus() === Job::STATUS_DONE) {
+        if (Job::STATUS_DONE === $job->getStatus()) {
             throw new \Exception('This job is already done.');
         }
 
         // job already cancelled
-        if ($job->getStatus() === Job::STATUS_CANCELLED) {
+        if (Job::STATUS_CANCELLED === $job->getStatus()) {
             return $job;
         }
 

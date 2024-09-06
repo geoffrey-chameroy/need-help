@@ -15,10 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimestampableEntity;
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_JOBBER = 'ROLE_JOBBER';
-
-    use TimestampableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
