@@ -1,0 +1,22 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    volumes:
+      - ./api:/srv/app
+    depends_on:
+      - db_need_help
+
+  db_need_help:
+    image: mysql:8.4
+
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile-nextjs
+    volumes:
+      - ./front:/app
+      - /front/app/node_modules
+    depends_on:
+      - php

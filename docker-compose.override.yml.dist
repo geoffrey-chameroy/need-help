@@ -1,0 +1,32 @@
+services:
+  php:
+    ports:
+      - '8000:80'
+    user: 'root'
+
+  db_need_help:
+    ports:
+      - '8001:3306'
+    environment:
+      MYSQL_DATABASE: need_help
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - data_need_help:/var/lib/mysql
+
+  phpmyadmin_need_help:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db_need_help
+    ports:
+      - '8002:80'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: db_need_help
+
+  nextjs:
+    ports:
+      - "3000:3000"
+    command: "npm run dev"
+
+volumes:
+  data_need_help:
