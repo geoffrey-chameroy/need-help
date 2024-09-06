@@ -56,3 +56,13 @@ To stop the containers, run:
 `docker-compose down`
 
 The database will not be erased
+
+## Tests and PSR
+
+To run api tests suite:
+
+`docker-compose exec php php vendor/bin/codecept run`
+
+To fix psr norms, run:
+
+`docker-compose exec php vendor/bin/php-cs-fixer fix`
